@@ -16,6 +16,7 @@
 		28D7516B1E8054110072C8AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7516A1E8054110072C8AC /* User.swift */; };
 		28D7516D1E806D890072C8AC /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7516C1E806D890072C8AC /* JSONParser.swift */; };
 		28D7516F1E8078150072C8AC /* HomeTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D7516E1E8078150072C8AC /* HomeTimelineViewController.swift */; };
+		28EE37D11E819F1C006F3B2B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28EE37D01E819F1C006F3B2B /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		28D7516A1E8054110072C8AC /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		28D7516C1E806D890072C8AC /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		28D7516E1E8078150072C8AC /* HomeTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTimelineViewController.swift; sourceTree = "<group>"; };
+		28EE37D01E819F1C006F3B2B /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				28D751681E8053F80072C8AC /* Tweet.swift */,
 				28D7516A1E8054110072C8AC /* User.swift */,
 				28D7516C1E806D890072C8AC /* JSONParser.swift */,
+				28EE37D01E819F1C006F3B2B /* API.swift */,
 			);
 			path = TwitterClient;
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				28D7516D1E806D890072C8AC /* JSONParser.swift in Sources */,
 				28D751691E8053F80072C8AC /* Tweet.swift in Sources */,
 				28D751551E803FB20072C8AC /* AppDelegate.swift in Sources */,
+				28EE37D11E819F1C006F3B2B /* API.swift in Sources */,
 				28D7516F1E8078150072C8AC /* HomeTimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
