@@ -9,6 +9,7 @@
 import Foundation
 
 typealias JSONParserCallback = (Bool, [Tweet]?)->()
+typealias UserCallbackOne = (Bool, User?)->()
 
 class JSONParser {
    
@@ -50,4 +51,20 @@ class JSONParser {
       
    }
    
+   class func responseStatusCodes(data: Data, callback: UserCallbackOne) {
+      
+      
+      do {
+         
+         if let userJSON = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]{
+            let user = User(json: userJSON)
+            callback(true, user)
+            }
+            
+         } catch {
+         print("Its not working")
+         
+      }
+   }
 }
+

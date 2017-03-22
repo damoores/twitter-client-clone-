@@ -63,19 +63,37 @@ class API{
             guard let response = response else { callback(nil); return }
             guard let data = data else { callback(nil); return}
             
+            
+            
             switch response.statusCode {
+               
             case 200...299:
-               if let userJSON = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]{
-                  let user = User(json: userJSON)
-                  callback(user)
-                  
-               }//need to put in a do catch for this force unwrap, and move this JSON part in the JSON parser class
+               JSONParser.responseStatusCodes(data: data, callback: { (success, tweets) in
+                  if success {
+                     callback(tweets)
+                  }
+               })
+               print("Everything is good with a \(response.statusCode)")
+            case 400...499:
+               print("Something is wrong with the app with a code \(response.statusCode)")
+               return
+            case 500...599:
+               print("\(response.statusCode) means there is a problem with a server")
+               return
             default:
                print("Error response came back with statusCode: \(response.statusCode)")
                callback(nil)
             }
+         
             
          })
+         //               if let userJSON = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]{
+         //                  let user = User(json: userJSON)
+         //                  print("Everything is good with a \(response.statusCode)")
+         //                  callback(user)
+         //
+         //               }
+         //need to put in a do catch for this force unwrap, and move this JSON part in the JSON parser class
       }//need to import social framework
       
    }

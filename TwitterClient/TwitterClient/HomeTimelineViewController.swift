@@ -19,7 +19,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
    
    @IBOutlet weak var tableView: UITableView!
 
-    override func viewDidLoad() { //this is a function already in the UIViewController
+    override func viewDidLoad() { //this is a function already ifn the UIViewController
         super.viewDidLoad()
       
          self.tableView.dataSource = self //need this line to render
