@@ -21,7 +21,7 @@
    }
    
    
-   override func viewDidLoad() { //this is a function already ifn the UIViewController
+   override func viewDidLoad() { //this is a function already in the UIViewController
       super.viewDidLoad()
       
       self.navigationItem.title = "My Timeline" //not part of the navigation controller
@@ -57,7 +57,7 @@
             
             destinationController.tweet = selectedTweet //assigned it back
          }
-         
+          
       }
    }
    
@@ -89,16 +89,20 @@
          cell.tweetLabel.text = tweetToShow.text
          cell.tweetUserLabel.text = tweetToShow.user?.name
       }
+//      else {
+//         cell.tweetLabel = TweetDetailViewController.tweet.text
+//         cell.tweeUserLabel = TweetDetailViewController.tweet.user?.name ?? "Unknown"
+//      }
       return cell
    }
    
    
    
-   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      
-      print("\(indexPath.row)")
-      
-   }
+//   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//      
+//      print("\(indexPath.row)")
+//      
+//   }
    
  }
  
