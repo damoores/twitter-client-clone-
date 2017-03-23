@@ -14,6 +14,14 @@ typealias AccountCallback = (ACAccount?) -> () //giving a new name to another ty
 typealias UserCallback = (User?) -> ()
 typealias TweetsCallback = ([Tweet]?) ->()
 
+//enum Callback {
+//   case Accounts(ACAccount?)
+//   case User(User?)
+//   case Tweets([Tweet]?)
+//}
+//
+//typealias babyGotBack = (Callback) -> ()
+
 
 class API{
    static let shared = API()
