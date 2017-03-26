@@ -8,7 +8,7 @@
  
  import UIKit
  
- class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate {
    
    @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -34,6 +34,7 @@
       self.tableView.register(tweetNib, forCellReuseIdentifier: TweetNibCell.identifier)
       
       self.tableView.delegate = self
+      self.navigationController?.delegate = self
       self.tableView.estimatedRowHeight = 50 //need this to show the height of the cell
       self.tableView.rowHeight = UITableViewAutomaticDimension
       
@@ -65,8 +66,6 @@
             
  //           destinationController.tweet = selectedTweet //assigned it back
          }
-         
-          	
       }
       if segue.identifier == ProfileViewController.identifier {
          print("inside of prepare (for segue) in ProfileViewController")
@@ -74,8 +73,16 @@
          guard let destinationController = segue.destination as?
             ProfileViewController else { return }
          
-         API.shared.getUser(callback: { (user) in
-         destinationController.user = user})      }
+//         API.shared.getUser(callback: { (aUser) in
+//            guard let userProfile = aUser else { fatalError ("Cannot access profile") }
+//
+//           OperationQueue.main.addOperation {
+//              self.profile = userProfile
+//            }
+//         })
+        API.shared.getUser(callback: { (user) in
+         destinationController.user = user})
+      }
    }
    
    
@@ -90,14 +97,6 @@
             self.activityIndicator.stopAnimating() //stops activity at the end of the request
          
       }
-    
-      API.shared.getUser(callback: { (aUser) in
-         guard let userProfile = aUser else { fatalError ("Cannot access profile") }
-         
-         OperationQueue.main.addOperation {
-            self.profile = userProfile
-         }
-      })
       
       OperationQueue.main.addOperation {
          self.activityIndicator.stopAnimating()
@@ -116,14 +115,12 @@
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TweetNibCell //can use this instead of the if let
+      let cell = tableView.dequeueReusableCell(withIdentifier: TweetNibCell.identifier, for: indexPath) as! TweetNibCell //can use this instead of the if let
       
       let tweetToShow = self.allTweets[indexPath.row]
       
-         cell.tweet.text = tweet
-         //cell.tweetUserLabel.text = tweetToShow.user?.name
-     
-//
+         cell.tweet = tweetToShow
+      
       return cell
    }
    

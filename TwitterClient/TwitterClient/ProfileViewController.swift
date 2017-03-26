@@ -9,21 +9,28 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   @IBOutlet weak var name: UILabel!
+   @IBOutlet weak var profileImageView: UIImageView!
+   @IBOutlet weak var location: UILabel!
 
-      var user : User? {
-         didSet {
-            self.name.text = user?.name
-            self.location.text = user?.location
-            UIImage.fetchImageWith((user?.profileImageURL)!) {(profilePic) in
+   override func viewDidLoad() {
+      super.viewDidLoad()
+      
+      
+      // Do any additional setup after loading the view.
+   }
+   var profile : User?
+   
+   var user : User? {
+      didSet {
+         self.name.text = user?.name
+         self.location.text = user?.location
+         UIImage.fetchImageWith((user?.profileImageURL)!) {(profilePic) in
             self.profileImageView.image = profilePic
-            }
          }
       }
-      
-        // Do any additional setup after loading the view.
-    }
+   }
+   
 
 
 }

@@ -52,7 +52,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="tweetLabel" destination="eE8-Dj-Du9" id="ORI-uW-kg4"/>
-                <outlet property="userImageView" destination="i7B-Sx-BLa" id="oPJ-Z5-CjT"/>
+                <outlet property="userImageView" destination="4kF-gz-pxV" id="wbr-jL-Myt"/>
                 <outlet property="usernameLabel" destination="bra-XV-asm" id="cRM-gp-Yfb"/>
             </connections>
             <point key="canvasLocation" x="136" y="66.5"/>

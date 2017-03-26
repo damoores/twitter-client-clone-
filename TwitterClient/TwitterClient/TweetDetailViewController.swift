@@ -35,33 +35,16 @@ class TweetDetailViewController: UIViewController {
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       super.prepare(for: segue, sender: sender)
-      if segue.identifier == "ProfileViewController"{
+      
+      if segue.identifier == ProfileViewController.identifier{
          if let destinationController = segue.destination as? ProfileViewController {
-            destinationController.userProfile = self.profile   
+          
+            API.shared.getUser(callback: { (user) in
+               destinationController.user = user})
          }
       }
    }
-   
-//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      super.prepare(for: segue, sender: sender) //same segue and sender its passing
-//
-//   if segue.identifier == "ProfileViewController"{//segue its transitioning to
-//
-//         if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {//to know index path, returns Int
-//            let selectedTweet = self.allTweets[selectedIndex] //above row used to know where tweet is. returns tweet
-            
-//            if let destinationController = segue.destination as? ProfileViewController {
-//               destinationController.tweet = selectedTweet
-//            } //makes seleced go into destination controller
-            
-            //           destinationController.tweet = selectedTweet //assigned it back
-//         }
-         
-         
-//      }
-      
-//   }
-   
+}
+
    
 
-}

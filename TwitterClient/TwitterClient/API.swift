@@ -86,7 +86,7 @@ class API{
                print("Something is wrong with the app with a code \(response.statusCode)")
                return
             case 500...599:
-               print("\(response.statusCode) means there is a problem with a server")
+               print("\(response.statusCode) there is a problem with a server")
                return
             default:
                print("Error response came back with statusCode: \(response.statusCode)")

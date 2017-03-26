@@ -9,10 +9,12 @@
 import UIKit
 
 class TweetNibCell: UITableViewCell {
-   @IBOutlet weak var userImageView: NSLayoutConstraint!
+
+   
    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tweetLabel: UILabel!
    
+   @IBOutlet weak var userImageView: UIImageView!
    
    var tweet: Tweet! {
       didSet {
