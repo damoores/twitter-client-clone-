@@ -23,7 +23,6 @@ class TweetNibCell: UITableViewCell {
             UIImage.fetchImageWith(user.profileImageURL){(image) in
                self.userImageView.image = image
             }
-         
          }
          
          

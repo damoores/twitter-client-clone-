@@ -68,15 +68,17 @@
          
           	
       }
-      if segue.identifier == "showProfileSegue" {
+      if segue.identifier == ProfileViewController.identifier {
          print("inside of prepare (for segue) in ProfileViewController")
          
          guard let destinationController = segue.destination as?
-            UserProfileViewController else { return }
+            ProfileViewController else { return }
          
-         destinationController.userProfile = self.profile
-      }
+         API.shared.getUser(callback: { (user) in
+         destinationController.user = user})      }
    }
+   
+   
    
    func updateTimeline(){
       
