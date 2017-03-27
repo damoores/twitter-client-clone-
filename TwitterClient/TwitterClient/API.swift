@@ -86,7 +86,7 @@ class API{
                print("Something is wrong with the app with a code \(response.statusCode)")
                return
             case 500...599:
-               print("\(response.statusCode) means there is a problem with a server")
+               print("\(response.statusCode) there is a problem with a server")
                return
             default:
                print("Error response came back with statusCode: \(response.statusCode)")
@@ -106,11 +106,11 @@ class API{
       
    }
    
-   private func updateTimeline(callback: @escaping TweetsCallback){
+   private func updateTimeline(url: String, callback: @escaping TweetsCallback){
       
-      let url = URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
+//      let url = URL(string: "")
       
-      if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {//parameters are for the key value pairing in the url for the API its requesting from.
+      if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: URL(string: url), parameters: nil) {//parameters are for the key value pairing in the url for the API its requesting from.
          request.account = self.account
       request.perform(handler: { (data, response, error) in
       
@@ -146,14 +146,14 @@ class API{
          login(callback: { (account) in
             if let account = account {
                self.account = account
-               self.updateTimeline(callback: { (tweets) in
-                  callback(tweets) //need escaping closure to let the callback come out the scope
-               })
+               self.updateTimeline(url: "https://api.twitter.com/1.1/statuses/home_timeline.json", callback: {(tweets) in
+                     callback(tweets)
+                  })
             }
          })
       } else {
 //         self.updateTimeline(callback: callback) // this does the same thing as the one right below
-         self.updateTimeline(callback: { (tweets) in
+         self.updateTimeline(url: "https://api.twitter.com/1.1/statuses/home_timeline.json", callback: { (tweets) in
             callback(tweets)
          })
       
@@ -161,4 +161,19 @@ class API{
       
    }
    
+   func getTweetsFor(_ user: String, callback: @escaping TweetsCallback) {
+      let urlString = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=\(user)"
+      
+      self.updateTimeline(url: urlString, callback: {(tweets) in
+         callback(tweets)
+      })
+   }
+   
+   func getUser(callback: @escaping UserCallback){
+      self.getOAuthUser{(aUser) in
+         guard let userProfile = aUser else { fatalError("Could not access user profile")}
+         callback(userProfile)
+      }
+   
+   }
 }
