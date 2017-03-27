@@ -39,17 +39,7 @@
       self.tableView.rowHeight = UITableViewAutomaticDimension
       
       updateTimeline()
-      
-      //         JSONParser.tweetsFrom(data: JSONParser.sampleJSONData) { (success, tweets) in
-      //            if(success){
-      //               guard let tweets = tweets else { fatalError("Tweets came back nil") }//guard doesnt let it go past if there is nothing or it cant unwrap something, if let  still keeps it going
-      //
-      //               for tweet in tweets {
-      //                  dataSource.append(tweet)
-      ////                  print(tweet.text)
-      //               }
-      //            }
-      //      }
+
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,8 +53,6 @@
             if let destinationController = segue.destination as? TweetDetailViewController {
                destinationController.tweet = selectedTweet
             } //makes seleced go into destination controller
-            
- //           destinationController.tweet = selectedTweet //assigned it back
          }
       }
       if segue.identifier == ProfileViewController.identifier {
